@@ -49,11 +49,19 @@ namespace NavigationExample11B1.View
         {
             DataGridViewRow row = dgvUsers.CurrentRow;
             int id = int.Parse(row.Cells[0].Value.ToString());
+            controller.DeleteUser(id);
+            RefreshTable();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            DataGridViewRow row = dgvUsers.CurrentRow;
+            int id = int.Parse(row.Cells[0].Value.ToString());
+            User user = new User();
+            user.Username = txtUsername.Text;
+            user.Password = txtPassword.Text;
+            controller.UpdateUser(id, user);
+            RefreshTable();
         }
     }
 }
